@@ -1,0 +1,259 @@
+@import "tailwindcss";
+@import "tailwindcss-animated";
+
+
+@plugin "daisyui" {
+    themes: pastel --default, dark --prefersdark;
+}
+
+
+@plugin "daisyui/theme" {
+    name: "pastel";
+    default: true;
+    prefersdark: true;
+    color-scheme: "dark";
+    --color-base-100: oklch(98% 0 0);
+    --color-base-200: oklch(96% 0.001 286.375);
+    --color-base-300: oklch(92% 0.004 286.32);
+    --color-base-content: oklch(21% 0.006 285.885);
+    --color-primary: oklch(57.2% 59% 287.068);
+    --color-primary-content: oklch(98% 0.003 247.858);
+    --color-secondary: oklch(60% 0.126 221.723);
+    --color-secondary-content: oklch(98% 0.003 247.858);
+    --color-accent: oklch(72% 0.219 149.579);
+    --color-accent-content: oklch(98% 0.003 247.858);
+    --color-neutral: oklch(58% 0.233 277.117);
+    --color-neutral-content: oklch(98% 0 0);
+    --color-info: oklch(71% 0.143 215.221);
+    --color-info-content: oklch(97% 0.014 254.604);
+    --color-success: oklch(62% 0.194 149.214);
+    --color-success-content: oklch(97% 0.021 166.113);
+    --color-warning: oklch(66% 0.179 58.318);
+    --color-warning-content: oklch(98% 0.016 73.684);
+    --color-error: oklch(50% 0.213 27.518);
+    --color-error-content: oklch(97% 0.014 343.198);
+    --radius-selector: 1rem;
+    --radius-field: 1rem;
+    --radius-box: 1rem;
+    --size-selector: 0.1875rem;
+    --size-field: 0.25rem;
+    --border: 1.5px;
+    --depth: 1;
+    --noise: 1;
+}
+
+
+@plugin "daisyui/theme" {
+    name: "dark";
+    default: true;
+    prefersdark: true;
+    color-scheme: "dark";
+    --color-base-100: oklch(25.33% 0.016 252.42);
+    --color-base-200: oklch(23.26% 0.014 253.1);
+    --color-base-300: oklch(21.15% 0.012 254.09);
+    --color-base-content: oklch(97.807% 0.029 256.847);
+    --color-primary: oklch(57.2% 59% 287.068);
+    --color-primary-content: oklch(96% 0.018 272.314);
+    --color-secondary: oklch(59% 0.145 163.225);
+    --color-secondary-content: oklch(94% 0.028 342.258);
+    --color-accent: oklch(71% 0.143 215.221);
+    --color-accent-content: oklch(38% 0.063 188.416);
+    --color-neutral: oklch(25% 0.09 281.288);
+    --color-neutral-content: oklch(92% 0.004 286.32);
+    --color-info: oklch(71% 0.143 215.221);
+    --color-info-content: oklch(29% 0.066 243.157);
+    --color-success: oklch(76% 0.177 163.223);
+    --color-success-content: oklch(37% 0.077 168.94);
+    --color-warning: oklch(82% 0.189 84.429);
+    --color-warning-content: oklch(41% 0.112 45.904);
+    --color-error: oklch(71% 0.194 13.428);
+    --color-error-content: oklch(27% 0.105 12.094);
+    --radius-selector: 1rem;
+    --radius-field: 1rem;
+    --radius-box: 1rem;
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+    --border: 1px;
+    --depth: 1;
+    --noise: 1;
+}
+
+
+
+/* Add this to your main app.css file */
+@layer utilities {
+    .animate-aura-1 {
+        animation: moveAcrossScreen1 25s linear infinite;
+    }
+
+    .animate-aura-2 {
+        animation: moveAcrossScreen2 30s linear infinite;
+    }
+
+    .animate-aura-3 {
+        animation: moveAcrossScreen3 35s linear infinite;
+    }
+
+    .animate-aura-4 {
+        animation: moveAcrossScreen4 28s linear infinite;
+    }
+}
+
+/* From an off-screen start to an off-screen end */
+@layer utilities {
+    .animate-aura-1 {
+        animation: floatAcross1 28s linear infinite;
+    }
+
+    .animate-aura-2 {
+        animation: floatAcross2 32s linear infinite;
+    }
+
+    .animate-aura-3 {
+        animation: floatAcross3 25s linear infinite;
+    }
+
+    .animate-aura-4 {
+        animation: floatAcross4 35s linear infinite;
+    }
+
+    .animate-aura-5 {
+        animation: floatAcross5 30s linear infinite;
+    }
+
+    .animate-aura-6 {
+        animation: floatAcross6 22s linear infinite;
+    }
+
+    .animate-aura-7 {
+        animation: floatAcross7 38s linear infinite;
+    }
+
+    .animate-aura-8 {
+        animation: floatAcross8 26s linear infinite;
+    }
+}
+
+@keyframes floatAcross1 {
+    0% {
+        transform: translate(-20vw, -30vh);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translate(120vw, 100vh);
+        opacity: 0.4;
+    }
+}
+
+@keyframes floatAcross2 {
+    0% {
+        transform: translate(60vw, 110vh);
+        opacity: 0.35;
+    }
+
+    100% {
+        transform: translate(10vw, -20vh);
+        opacity: 0.45;
+    }
+}
+
+@keyframes floatAcross3 {
+    0% {
+        transform: translate(-40vw, 10vh);
+        opacity: 0.25;
+    }
+
+    100% {
+        transform: translate(130vw, 90vh);
+        opacity: 0.35;
+    }
+}
+
+@keyframes floatAcross4 {
+    0% {
+        transform: translate(80vw, -50vh);
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translate(-10vw, 60vh);
+        opacity: 0.5;
+    }
+}
+
+@keyframes floatAcross5 {
+    0% {
+        transform: translate(-10vw, 80vh);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translate(110vw, -10vh);
+        opacity: 0.4;
+    }
+}
+
+@keyframes floatAcross6 {
+    0% {
+        transform: translate(70vw, 20vh);
+        opacity: 0.35;
+    }
+
+    100% {
+        transform: translate(-30vw, 100vh);
+        opacity: 0.45;
+    }
+}
+
+@keyframes floatAcross7 {
+    0% {
+        transform: translate(30vw, -40vh);
+        opacity: 0.45;
+    }
+
+    100% {
+        transform: translate(90vw, 70vh);
+        opacity: 0.55;
+    }
+}
+
+@keyframes floatAcross8 {
+    0% {
+        transform: translate(100vw, 60vh);
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: translate(-20vw, -50vh);
+        opacity: 0.3;
+    }
+}
+
+/* Keyframes for the gradient animation. 
+      It smoothly transitions the background position from left to right and back,
+      creating a flowing effect on the oversized gradient.
+    */
+@keyframes gradient-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Custom utility to apply the animation.
+      - We make the background gradient much larger than the element (400%).
+      - We apply the 'gradient-flow' animation, making it run infinitely.
+      - The name 'animate-gradient-flow' is specific to avoid conflicts with Tailwind classes.
+    */
+.animate-gradient-flow {
+    background-size: 400% 400%;
+    animation: gradient-flow 6s ease infinite;
+}

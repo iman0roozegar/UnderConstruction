@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="@CurrentTheme">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <ResourcePreloader />
+    <link rel="stylesheet" href="@Assets["assets/css/tailwind.css"]" />
+    <link rel="stylesheet" href="@Assets["assets/vendors/keenicons/styles.bundle.css"]" />
+    <link rel="stylesheet" href="@Assets["UnderConstruction.styles.css"]" />
+    <ImportMap />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <HeadOutlet @rendermode="InteractiveAuto" />
+</head>
+
+<body>
+    <Routes @rendermode="InteractiveAuto" />
+    <ReconnectModal />
+    <script src="@Assets["assets/js/site.js"]"></script>
+    <script src="@Assets["_framework/blazor.web.js"]"></script>
+</body>
+
+</html>
+
+
+
+@code {
+    private string CurrentTheme { get; set; } = "pastel";
+    protected override void OnInitialized()
+    {
+        var tehranTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Iran Standard Time");
+        var tehranTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, tehranTimeZone);
+        var currentTime = tehranTime.Hour;
+        Console.WriteLine($"date time hour is: {currentTime}");
+        if (currentTime >= 18 || currentTime < 6)
+        {
+            CurrentTheme = "dark";
+        }
+        else
+        {
+            CurrentTheme = "pastel";
+        }
+    }
+}

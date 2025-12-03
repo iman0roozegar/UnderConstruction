@@ -1,0 +1,273 @@
+﻿@page "/"
+@using System.Timers
+@implements IDisposable
+
+<HeadContent>
+    <!-- Primary Meta Tags -->
+    <!--You can change these for SEO as the HeadContent siggests-->
+    <title>وب کتاب 2.0 | تجربه‌ای سریع‌تر و هوشمندتر</title>
+    <meta name="description" content="نسخه جدید وب کتاب 2.0 با سرعت بالاتر، هوش مصنوعی پیشرفته و طراحی واکنش‌گرا در راه است. زمان باقی‌مانده تا رونمایی را دنبال کنید.">
+    <meta name="keywords" content="وب کتاب, نسخه جدید, وب کتاب 2.0, بروزرسانی, داشبورد نویسندگان, هوش مصنوعی, طراحی واکنش‌گرا">
+    <meta name="author" content="تیم وب کتاب">
+    <meta name="robots" content="index, follow">
+</HeadContent>
+
+<!--Skeleton loading-->
+@if (IsLoading)
+{
+    <div class="card fixed inset-[15px] md:inset-[50px] bg-base-200 shadow-xl flex flex-col">
+        <div class="card-body items-center text-center">
+            <div class="skeleton h-24 w-24 mb-4 rounded-full"></div>
+            <div class="skeleton h-8 w-64 mb-2"></div>
+            <div class="skeleton h-4 w-80"></div>
+        </div>
+    </div>
+}
+else
+{
+    <!-- FIXED MAIN CARD -->
+    <div class="card fixed inset-[15px] md:inset-[50px] bg-base-200 shadow-xl flex flex-col">
+
+        <!-- CARD HEADER - FIXED STEPPER -->
+        <div class="card-header w-full bg-base-200 p-4 rounded-2xl flex-shrink-0">
+            <ul class="steps steps-horizontal w-full">
+                <li class="step @(CurrentStep >= 1 ? "step-primary" : "")"></li>
+                <li class="step @(CurrentStep >= 2 ? "step-primary" : "")"></li>
+                <li class="step @(CurrentStep >= 3 ? "step-primary" : "")"></li>
+            </ul>
+        </div>
+
+        <!-- CARD BODY - SCROLLABLE CONTENT -->
+        <div class="card-body flex-1 overflow-y-auto items-center justify-start text-center p-8">
+
+            <!-- STEP CONTENT -->
+            @if (CurrentStep == 1)
+            {
+                <!-- Integrated responsive content for Step 1 -->
+                <div class="relative mt-6 mb-6 w-full flex flex-col items-center">
+                    <div class="relative inline-flex">
+                        <div class="absolute inset-0 bg-primary/30 rounded-full blur-xl animate-pulse"></div>
+                        <div class="bg-gradient-to-br from-base-100 to-base-200 p-4 rounded-full ring-4 ring-base-100 shadow-lg relative z-10">
+                            <i class="ki-filled ki-rocket text-5xl text-primary bg-clip-text"></i>
+                        </div>
+                    </div>
+
+                    <h1 class="text-3xl md:text-5xl font-black mt-4 mb-1 tracking-tight text-center">
+                        <span class="text-base-content">تحولی بزرگ برای</span>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-500 to-secondary">
+                            وب کتاب
+                        </span>
+                    </h1>
+
+                    <div class="flex flex-wrap justify-center gap-1 mt-3">
+                        <div class="badge badge-primary badge-outline gap-1 p-3">
+                            <span class="loading loading-ring loading-xs"></span>
+                            وضعیت: در حال بروزرسانی
+                        </div>
+                        <div class="badge badge-primary gap-1 p-3">
+                            نسخه 2.0
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-gray-500 mt-4">
+                    ما در حال بازنویسی هسته اصلی سیستم هستیم تا تجربه‌ای
+                    <span class="text-base-content font-bold border-b-2 border-primary/20">سریع‌تر</span>
+                    و
+                    <span class="text-base-content font-bold border-b-2 border-secondary/20">هوشمندتر</span>
+                    برای شما فراهم کنیم.
+                    از شکیبایی شما سپاسگزاریم؛ قول می‌دهیم ارزش انتظار را داشته باشد.
+                </p>
+
+                <p class="text-gray-500 mt-4">
+                    برای اطلاع از مدت بروزرسانی و ویژگی هایی که جدید اضافه خواهد شد بر روی قدم بعد کلیک کنید
+                </p>
+            }
+            <!-- Integrated responsive content for Step 2 -->
+            else if (CurrentStep == 2)
+            {
+                <div class="w-full max-w-5xl">
+                    <i class="ki-filled ki-cube-3 text-6xl text-primary mb-4"></i>
+                    <h2 class="text-2xl font-bold mb-2">ویژگی های جدید</h2>
+                    <p class="text-gray-500 mb-6">
+                        در نسخه جدید، ویژگی‌های هیجان‌انگیزی اضافه خواهد شد. در زیر مواردی از آن‌ها را ببینید:
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+                        <div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow">
+                            <div class="card-body p-4">
+                                <i class="ki-filled ki-rocket text-4xl text-primary mb-2"></i>
+                                <h3 class="font-bold text-lg">سرعت بالاتر</h3>
+                                <p class="text-sm text-gray-500">
+                                    سرعت و یکپارچگی در بارگذاری صفحات تجربه استفاده از نسخه وب وب کتاب را بهبود می‌بخشد. به صورتی که در نسخه جدید سرعت تا 60 درصد بهبود یافته!
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow">
+                            <div class="card-body p-4">
+                                <i class="ki-filled ki-artificial-intelligence text-4xl text-secondary mb-2"></i>
+                                <h3 class="font-bold text-lg">کیومرث!</h3>
+                                <p class="text-sm text-gray-500">
+                                    در نسخه جدید کیومرث باهوش تر و قوی تر به کمک شما خواهد آمد و از امکانات او در همه جا و به سرعت میتوانید استفاده کنید، از نوشتن گرفته تا استفاده از ویژگی های اجتماعی وب کتاب!
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow">
+                            <div class="card-body p-4">
+                                <i class="ki-filled ki-phone text-4xl text-accent mb-2"></i>
+                                <h3 class="font-bold text-lg">طراحی</h3>
+                                <p class="text-sm text-gray-500">
+                                    طراحی به گونه ای بروز رسانی شده که با توجه به دستگاهی که استفاده میکنید خود را تطبیق میدهد تا در همه حال بهترین تجربه کاربری را داشته باشید.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <!-- Integrated responsive content for Step 3 -->
+            else if (CurrentStep == 3)
+            {
+                <i class="ki-filled ki-check-circle text-6xl text-success mb-4"></i>
+                <h2 class="text-2xl font-bold mb-2">زمان باقی‌مانده تا رونمایی</h2>
+                <p class="text-gray-500 mb-6">در تاریخ 1 فروردین ماه 1405</p>
+
+                <div class="max-w-xl mx-auto mb-8">
+                    <p class="text-base text-base-content/70 leading-relaxed">
+                        در مرحله اول داشبورد نویسندگان در اختیار شما قرار خواهد گرفت (اوایل بهمن ماه) و پس از آن اپلیکیشن و وبسایت جدید به صورت همزمان خدمت شما عرضه خواهد شد.
+                    </p>
+                </div>
+
+                <div class="max-w-xl mx-auto mb-8">
+                    <p class="text-xs text-base-content/70 leading-relaxed">
+                        ** اطلاعات های شما توسط ما به صورت رمزنگاری شده نگهداری میشود. به دلیل تغییر زیرساخت کلی وب کتاب ممکن است بعضی از شما اطلاعات خود را پیدا نکنید که تیم پشتیبانی ما در روز انتشار این مشکل را برطرف خواهد کرد
+                    </p>
+                </div>
+
+                <div class="w-full bg-base-200/50 rounded-xl p-4 border border-base-content/5 max-w-2xl">
+                    <div class="grid grid-cols-4 gap-3 max-w-xl mx-auto" dir="ltr">
+                        <div class="flex flex-col items-center bg-base-100 rounded-lg p-3 shadow-sm border-b-3 border-primary">
+                            <span class="countdown font-mono text-3xl md:text-4xl text-primary">
+                                <span style="--value:@_remaining.Days;"></span>
+                            </span>
+                            <span class="text-xs uppercase font-bold text-base-content/50 mt-1">روز</span>
+                        </div>
+
+                        <div class="flex flex-col items-center bg-base-100 rounded-lg p-3 shadow-sm border-b-3 border-primary/70">
+                            <span class="countdown font-mono text-3xl md:text-4xl text-base-content">
+                                <span style="--value:@_remaining.Hours;"></span>
+                            </span>
+                            <span class="text-xs uppercase font-bold text-base-content/50 mt-1">ساعت</span>
+                        </div>
+
+                        <div class="flex flex-col items-center bg-base-100 rounded-lg p-3 shadow-sm border-b-3 border-secondary/70">
+                            <span class="countdown font-mono text-3xl md:text-4xl text-base-content">
+                                <span style="--value:@_remaining.Minutes;"></span>
+                            </span>
+                            <span class="text-xs uppercase font-bold text-base-content/50 mt-1">دقیقه</span>
+                        </div>
+
+                        <div class="flex flex-col items-center bg-base-100 rounded-lg p-3 shadow-sm border-b-3 border-secondary">
+                            <span class="countdown font-mono text-3xl md:text-4xl text-secondary">
+                                <span style="--value:@_remaining.Seconds;"></span>
+                            </span>
+                            <span class="text-xs uppercase font-bold text-base-content/50 mt-1">ثانیه</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- CARD FOOTER - FIXED BUTTONS -->
+        <div class="card-footer w-full bg-base-200 rounded-2xl p-4 flex-shrink-0">
+            <div class="card-actions justify-end">
+                @if (CurrentStep > 1)
+                {
+                    <button class="btn btn-outline" @onclick="PreviousStep">قدم قبل</button>
+                }
+                @if (CurrentStep < 3)
+                {
+                    <button class="btn btn-primary" @onclick="NextStep">قدم بعد</button>
+                }
+                else
+                {
+                    <button class="btn btn-success" @onclick="ResetSteps">شروع مجدد</button>
+                }
+            </div>
+        </div>
+
+    </div>
+}
+
+@code {
+    private bool IsLoading { get; set; } = true;
+    private int CurrentStep { get; set; } = 1;
+
+    //DateTime is set to Tehran and the set date is 2026   March  21
+    private DateTime _targetDate = new DateTime(2026, 3, 21, 0, 0, 0);
+    private TimeSpan _remaining;
+    private Timer? _timer;
+    private bool _hasInitialized = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Ensure loading happens after prerender and the time is a second
+            await Task.Delay(1000);
+            IsLoading = false;
+
+            CalculateTime();
+
+            _timer = new Timer(1000);
+            _timer.Elapsed += (sender, e) =>
+            {
+                CalculateTime();
+                InvokeAsync(StateHasChanged);
+            };
+            _timer.Start();
+
+            _hasInitialized = true;
+
+            StateHasChanged();
+        }
+    }
+
+    private void CalculateTime()
+    {
+        var now = DateTime.Now;
+        if (now < _targetDate)
+        {
+            _remaining = _targetDate - now;
+        }
+        else
+        {
+            _remaining = TimeSpan.Zero;
+            _timer?.Stop();
+        }
+    }
+
+    private void NextStep()
+    {
+        if (CurrentStep < 3)
+            CurrentStep++;
+    }
+
+    private void PreviousStep()
+    {
+        if (CurrentStep > 1)
+            CurrentStep--;
+    }
+
+    private void ResetSteps()
+    {
+        CurrentStep = 1;
+    }
+
+    public void Dispose()
+    {
+        _timer?.Dispose();
+    }
+}

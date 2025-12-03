@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="UnderConstruction/UnderConstruction.Client/UnderConstruction.Client.csproj" />
+  <Project Path="UnderConstruction/UnderConstruction/UnderConstruction.csproj" />
+</Solution>
